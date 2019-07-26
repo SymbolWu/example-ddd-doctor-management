@@ -1,0 +1,7 @@
+.list-title{
+    display: inline-block;
+    font-size: 32px;
+}
+.list-pagination{
+    float: right;
+}
