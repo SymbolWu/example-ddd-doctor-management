@@ -20,7 +20,6 @@ export default class Index extends React.Component {
     getDoctorList = async () => {
         await this.setState({ loading: true });
         let finalState = await DoctorService.getDoctorList({ limit: 50 });
-        console.log('finalState:', finalState);
         this.setState(finalState);
     }
     changeTheView = (type) => {

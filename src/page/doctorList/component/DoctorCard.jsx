@@ -1,10 +1,11 @@
 import React from 'react'
-import { List, Card, Avatar } from 'antd'
-
+import { List, Card, Avatar, Tooltip } from 'antd'
+// import './DoctorCard.less'
+import { CARD_TITLE } from '../../../constants/doctorList';
 const Title = ({ doctor }) => {
     const name = doctor.getFullName();
     return <>
-        <Avatar>{name[0].toUpperCase()}</Avatar>
+        <Avatar src={doctor.avatar} />
         <p>{name}</p>
     </>
 }
@@ -20,16 +21,25 @@ const DoctorCard = (props) => {
             xl: 6,
             xxl: 3,
         }}
+        className="doctor-list"
         dataSource={doctorList}
         renderItem={item => (
             <List.Item>
                 <Card title={<Title doctor={item} />}>
-                    <p>{item.phoneNumber}</p>
-                    <p>{item.languages}</p>
-                    {/* <p>{item.bio}</p> */}
+                    <p>{`${CARD_TITLE.PHONE_NUM}:${item.phoneNumber}`}</p>
+                    <p>{`${CARD_TITLE.LANG}:${item.languages}`}</p>
+
+                    <Tooltip placement="bottom" title={item.bio}>
+                        <p className='doctor-list-bio'>
+                            <span>{CARD_TITLE.BIO}:</span>
+                            <span className='doctor-list-bio-context'>{item.bio}</span>
+                        </p>
+                    </Tooltip>
+
                 </Card>
             </List.Item>
         )}
+        pagination={{ pageSize: 5, total: doctorList.length }}
     />
 }
 export default DoctorCard

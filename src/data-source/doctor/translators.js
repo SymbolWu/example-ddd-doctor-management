@@ -11,6 +11,8 @@ export const doctorsTranslator = ({
         lastName: profile.last_name,
         phoneNumber: npi,
         languages:profile.languages[0].name,
-        bio: profile.bio
+        bio: profile.bio,
+        gender:profile.gender,
+        avatar:profile.image_url
     }
 }

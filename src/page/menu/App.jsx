@@ -1,9 +1,9 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom'
-import { DOCTOR_LIST, ANALYSE } from '../../constants/menu'
+import { DOCTOR_LIST, ANALYSE, LOGO } from '../../constants/menu'
 import Router from '../../route/router';
-import './App.css'
+import './App.less'
 const { Header, Sider, Content } = Layout;
 
 class App extends React.Component {
@@ -21,17 +21,19 @@ class App extends React.Component {
     return (
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-          <div className="logo" />
+          <div className="logo"><span>{LOGO}</span></div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
-              <Icon type="user" />
-              <Link to="/list">{DOCTOR_LIST}</Link>
-              {/* <span>{DOCTOR_LIST}</span> */}
+              <Link to="/list">
+                <Icon type="user" />
+                {DOCTOR_LIST}
+              </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <Link to="/analyse">{ANALYSE}</Link>
-              {/* <span>{ANALYSE}</span> */}
+              <Link to="/analyse">
+                <Icon type="video-camera" />
+                {ANALYSE}
+              </Link>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -43,16 +45,8 @@ class App extends React.Component {
               onClick={this.toggle}
             />
           </Header>
-          <Content
-            className="content"
-            // style={{
-            //   margin: '24px 16px',
-            //   padding: 24,
-            //   background: '#fff',
-            //   minHeight: 280,
-            // }}
-          >
-            <Router/>
+          <Content className="content" >
+            <Router />
           </Content>
         </Layout>
       </Layout>

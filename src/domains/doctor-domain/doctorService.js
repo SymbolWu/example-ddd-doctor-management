@@ -7,14 +7,14 @@ export default class DoctorService {
      * Get doctor info
      */
     static async getDoctorList(params) {
-        let doctorList = [];
+        let res = {};
         try {
-            doctorList = await getDoctorList(params);
+            res = await getDoctorList(params);
         } catch (error) {
             console.log('getDoctorList Error:', error);
         }
         return {
-            doctorList: doctorList.data.map(item => new Doctor(doctorsTranslator(item))),
+            doctorList: res.data.map(item => new Doctor(doctorsTranslator(item))),
             loading: false
         }
     }
